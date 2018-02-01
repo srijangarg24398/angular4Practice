@@ -47,3 +47,17 @@
 		{{i+1}} : {{hobby}} <button (click)="deleteHobby(i)">X</button>
 	</li>
 </ul>
+
+
+<button (click)="show = !show">
+	{{show? 'hide':'show'}}
+</button>
+
+<h1>Show : {{show}}</h1>
+<div *ngIf="show;then thenBlock;else elseBlock">YOLO</div>
+<!-- <ng-template #thenBlock><h2>Then Block</h2></ng-template> -->
+<ng-template #elseBlock><h2>Else Block</h2></ng-template>
+
+<button (click)="switchPrimary()">Switch Primary</button>
+<ng-template #primaryBlock>Primary Block</ng-template>
+<ng-template #secondaryBlock>Secondary Block</ng-template>

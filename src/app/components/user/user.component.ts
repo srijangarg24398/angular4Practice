@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -14,6 +14,13 @@ export class UserComponent implements OnInit {
 	address:Address;
 	hobbies:any[];
 	isEdit:boolean;
+
+  show:boolean=true;
+  thenBlock: TemplateRef<any>|null=null;
+  @ViewChild('primaryBlock')
+  primaryBlock: TemplateRef<any>|null=null;
+  @ViewChild('secondaryBlock')
+  secondaryBlock: TemplateRef<any>|null=null;
 
   constructor() { 
   	console.log("User Components constructor");
@@ -39,8 +46,11 @@ export class UserComponent implements OnInit {
   	this.hobbies.splice(i,1);
   	return false;
   }
-
+  switchPrimary(){
+    this.thenBlock=this.thenBlock===this.primaryBlock ? this.secondaryBlock : this.primaryBlock;
+  }
   ngOnInit() {
+    this.thenBlock = this.primaryBlock;
   	console.log("User components on init");
   	this.name="onInit"
   	this.email="srijan@gmail.com"
