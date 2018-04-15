@@ -10,6 +10,9 @@ import { AboutComponent } from './components/about/about.component';
 import { DataService } from './services/data.service';
 import { MyNgIfDirective } from './my-ng-if.directive';
 
+import { SharedModule } from './shared/shared.module';
+
+
 const appRoutes:Routes=[
   {path:"",component:UserComponent},
   {path:"about",component:AboutComponent}
@@ -26,7 +29,8 @@ const appRoutes:Routes=[
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule,
+    SharedModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
