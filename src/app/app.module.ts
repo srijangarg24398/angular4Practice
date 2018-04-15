@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { DataService } from './services/data.service';
+import { MyNgIfDirective } from './my-ng-if.directive';
 
 const appRoutes:Routes=[
   {path:"",component:UserComponent},
@@ -18,7 +19,8 @@ const appRoutes:Routes=[
   declarations: [
     AppComponent,
     UserComponent,
-    AboutComponent
+    AboutComponent,
+    MyNgIfDirective
   ],
   imports: [
     BrowserModule,
