@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable'
 // import 'rxjs/add/operator/combineLatest'
 import 'rxjs/add/observable/combineLatest'
 import { Subscription } from 'rxjs/Subscription'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 
@@ -25,6 +26,8 @@ export class ObservablesComponent implements OnInit {
   dogCount:number
   catName:Observable<string>
   dogName:Observable<string>
+  animals:Observable<any[]>
+  currentAnimal=new BehaviorSubject(null);
 
   constructor(private db:AngularFireDatabase) { 
   }
@@ -46,6 +49,9 @@ export class ObservablesComponent implements OnInit {
   	// hello.combineLatest(world)
   	// hello.subscribe(data=>console.log(data))
   	Observable.combineLatest(hello,world).subscribe(data=>console.log(data))
+  	let cat=this.db.object('cats/-LBGCCaCzhjVSCyLUkKb').valueChanges()
+  	let dog=this.db.object('dogs/-LBGCYU1TX7K925DZqMd').valueChanges()
+  	this.animals=Observable.combineLatest(cat,dog)
   }
 
   initializeAll(){
@@ -75,6 +81,10 @@ export class ObservablesComponent implements OnInit {
   	this.catCount=this.cats.map(cats=>{
   		return cats.length
   	})
+  }
+
+  changeAnimal(animal, type){
+  	this.currentAnimal.next(animal)
   }
 
   ngOnDestroy(){

@@ -1,8 +1,21 @@
+<hr><hr>
+<div>
+	<h1 style="text-align: center;">Animals via CombineLatest</h1>
+	<div class="combined-animals">
+		<div *ngFor="let animal of animals | async">
+			<div class="single-col">
+				<img [src]="animal.url">
+				<h2>{{animal.name}}</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<hr><hr>
 <div class="section-divider">
 	<div class="animals-inside">
 		<h1>Cats ( {{ catCount | async }} )</h1>
 		<h3>The first cat's name is {{catName |async}}</h3>
-		<div class="" *ngFor="let cat of cats | async">
+		<div class="" *ngFor="let cat of cats | async" (click)="changeAnimal(cat,'cat')">
 			<div class="single-col">
 				<img [src]="cat.url">
 				<h2>{{cat.name}}</h2>
@@ -12,10 +25,23 @@
 	<div class="animals-inside">
 		<h1>Dogs ( {{ dogCount }} )</h1>
 		<h3>The first dog's name is {{dogName |async}}</h3>
-		<div class="" *ngFor="let dog of dogs">
+		<div class="" *ngFor="let dog of dogs" (click)="changeAnimal(dog,'dog')">
 			<div class="single-col">
 				<img [src]="dog.url">
 				<h2>{{dog.name}}</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<hr><hr>
+<div *ngIf="(currentAnimal | async)">
+	<h1 style="text-align: center;">Behaviour Subject</h1>
+	<h4 style="text-align: center;">To share current data throughout the app</h4>
+	<div class="combined-animals">
+		<div>
+			<div class="single-col">
+				<img [src]="(currentAnimal | async)?.url">
+				<h2>{{(currentAnimal | async)?.name}}</h2>
 			</div>
 		</div>
 	</div>

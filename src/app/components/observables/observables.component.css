@@ -2,6 +2,13 @@ div.section-divider{
 	display: flex;
 	justify-content: space-around;
 }
+div.combined-animals{
+	display: flex;
+	justify-content: space-around;
+}
+div.combined-animals h1{
+	text-align: center;
+}
 div.animals-inside{
 	display: flex;
 	flex-direction: column;
