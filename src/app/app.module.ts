@@ -11,11 +11,16 @@ import { DataService } from './services/data.service';
 import { MyNgIfDirective } from './my-ng-if.directive';
 
 import { SharedModule } from './shared/shared.module';
+import { ObservablesComponent } from './components/observables/observables.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment.prod';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 const appRoutes:Routes=[
   {path:"",component:UserComponent},
-  {path:"about",component:AboutComponent}
+  {path:"about",component:AboutComponent},
+  {path:"observables",component:ObservablesComponent}
 ];
 
 @NgModule({
@@ -23,13 +28,16 @@ const appRoutes:Routes=[
     AppComponent,
     UserComponent,
     AboutComponent,
-    MyNgIfDirective
+    MyNgIfDirective,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     SharedModule
   ],
   providers: [DataService],

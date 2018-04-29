@@ -1,0 +1,29 @@
+div.section-divider{
+	display: flex;
+	justify-content: space-around;
+}
+div.animals-inside{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+div.animals-inside h1{
+	color: blue;
+}
+div.single-col{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+div.single-col h2{
+	background-color: lightgreen;
+	padding: 10px;
+	border-radius: 10px
+}
+div.single-col img{
+	height: 300px;
+	width: 500px;
+	border-radius: 20px;
+}
